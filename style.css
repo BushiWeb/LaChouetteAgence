@@ -1040,3 +1040,21 @@ h4 {
         text-align: center;
     }
 }
+
+figure {
+    color: #7A6457;
+}
+
+blockquote {
+    font-style: italic;
+    border: none;
+    margin-bottom: 0;
+}
+
+blockquote::before {
+    content: open-quote;
+}
+
+blockquote::after {
+    content: close-quote;
+}
