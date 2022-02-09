@@ -10,7 +10,7 @@ body {
 a,
 button {
     transition: all .3s ease-in-out;
-    outline: none!important;
+    outline: none;
 }
 
 a:hover {
@@ -461,7 +461,7 @@ nav .caret {
 }
 
 button {
-    outline: none!important;
+    outline: none;
 }
 
 .btn-rd {
@@ -783,7 +783,7 @@ h4 {
     color: #FFFFFF!important;
 }
 
-.btn-atomic-tangerine:hover {
+.btn-atomic-tangerine:hover, .btn-atomic-tangerine:focus {
     background: #c27956!important;
     color: #FFFFFF!important;
 }
@@ -1057,4 +1057,9 @@ blockquote::before {
 
 blockquote::after {
     content: close-quote;
+}
+
+a:focus, button:focus, .btn:focus {
+    outline: 3px solid #c27956;
+    outline-offset: 2px;
 }
