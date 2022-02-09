@@ -1059,7 +1059,7 @@ blockquote::after {
     content: close-quote;
 }
 
-a:focus, button:focus, .btn:focus {
+a:focus, button:focus, .btn:focus, .navbar-toggle:focus {
     outline: 3px solid #7f482e;
     outline-offset: 2px;
 }
