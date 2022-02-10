@@ -783,7 +783,7 @@ h4 {
     color: #242424!important;
 }
 
-.btn-atomic-tangerine:hover, .btn-atomic-tangerine:focus {
+.btn-atomic-tangerine:hover {
     background: #7f482e!important;
     color: #FFFFFF!important;
 }
@@ -1059,9 +1059,19 @@ blockquote::after {
     content: close-quote;
 }
 
-a:focus, button:focus, .btn:focus, .navbar-toggle:focus {
+a:focus, button:focus, .navbar-toggle:focus {
     outline: 3px solid #7f482e;
     outline-offset: 2px;
+}
+
+.ltc-white:focus {
+    outline-color: #cccccc;
+    color: #cccccc!important;
+}
+
+.btn:focus {
+    outline: 4px solid #F3976C;
+    outline-offset: 4px;
 }
 
 .dark {
