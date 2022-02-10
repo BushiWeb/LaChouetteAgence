@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="fr">
+<html lang="fr" class="no-js">
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="">
@@ -18,10 +18,14 @@
 
 
 	<script src="./js/jquery-2.1.0.min.js"></script>
+	<script src="./js/modernizr-webp.min.js" async></script>
 	<script src="./js/bootstrap.min.js"async></script>
 	<script src="./js/blocs.min.js"async></script>
 	<script src="./js/jqBootstrapValidation.min.js"async></script>
 	<script src="./js/formHandler.min.js"async></script>
+	<script>
+		document.documentElement.classList.remove("no-js");
+	</script>
 
 
 <!-- Analytics -->
