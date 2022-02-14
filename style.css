@@ -1094,3 +1094,29 @@ a:focus, button:focus, .navbar-toggle:focus {
 .dark {
     color: #242424!important;
 }
+
+.keyboard-nav-link {
+    position: absolute;
+    top: 1em;
+    left: 0;
+    text-align: center;
+    border-radius: 0 10px 10px 0;
+    background: #F3976C;
+    color: #242424!important;
+    padding: 1em;
+    font-size: 1.7rem;
+    font-weight: bold;
+    z-index: 100;
+    max-width: 60vw;
+    transform: translateX(-100%);
+    opacity: 0;
+    transition: transform 0.3s ease-out, opacity 0.3s;
+    display: hidden;
+}
+
+.keyboard-nav-link:focus {
+    display: block;
+    transform: translateX(0);
+    outline: none;
+    opacity: 1;
+}
