@@ -141,9 +141,14 @@ function setUpLightBox() {
         var n = "";
         1 == i && (n = "autoplay");
         var s = $('<div role="dialog" aria-modal="true" aria-labelby="lightbox-caption" id="lightbox-modal" class="modal fade"><div class="modal-dialog"><div class="modal-content ' + l + ' blocs-lb-container"><button id="blocs-lightbox-close-btn" type="button" class="close-lightbox" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button><div class="modal-body"><a href="#" class="prev-lightbox" aria-label="prev"><span class="fa fa-chevron-left"></span></a><a href="#" class="next-lightbox" aria-label="next"><span class="fa fa-chevron-right"></span></a><img id="lightbox-image" class="img-responsive" src="' + e + '"><div id="lightbox-video-container" class="embed-responsive embed-responsive-16by9"><video controls ' + n + ' class="embed-responsive-item"><source id="lightbox-video" src="' + e + '" type="video/mp4"></video></div>' + a + "</div></div></div></div>");
-        $("body").append(s), "fullscreen-lb" == l && ($("#lightbox-modal").addClass("fullscreen-modal").append('<a class="close-full-screen-modal animated fadeIn" style="animation-delay:0.5s;" onclick="$(\'#lightbox-modal\').modal(\'hide\');"><div class="close-icon"></div></a>'), $("#blocs-lightbox-close-btn").remove()), ".mp4" == e.substring(e.length - 4) ? ($("#lightbox-image, .lightbox-caption").hide(), $("#lightbox-video-container").show()) : ($("#lightbox-image,.lightbox-caption").show(), $("#lightbox-video-container").hide()), $("#lightbox-modal").modal("show"), "no-gallery-set" == o ? (0 == $("a[data-lightbox]").index(targetLightbox) && $(".prev-lightbox").hide(), $("a[data-lightbox]").index(targetLightbox) == $("a[data-lightbox]").length - 1 && $(".next-lightbox").hide()) : (0 == $('a[data-gallery-id="' + o + '"]').index(targetLightbox) && $(".prev-lightbox").hide(), $('a[data-gallery-id="' + o + '"]').index(targetLightbox) == $('a[data-gallery-id="' + o + '"]').length - 1 && $(".next-lightbox").hide()), addLightBoxSwipeSupport()
+        $("body").append(s), "fullscreen-lb" == l && ($("#lightbox-modal").addClass("fullscreen-modal").append('<a class="close-full-screen-modal animated fadeIn" style="animation-delay:0.5s;" onclick="$(\'#lightbox-modal\').modal(\'hide\');"><div class="close-icon"></div></a>'), $("#blocs-lightbox-close-btn").remove()), ".mp4" == e.substring(e.length - 4) ? ($("#lightbox-image, .lightbox-caption").hide(), $("#lightbox-video-container").show()) : ($("#lightbox-image,.lightbox-caption").show(), $("#lightbox-video-container").hide()), $("#lightbox-modal").modal("show"), "no-gallery-set" == o ? (0 == $("a[data-lightbox]").index(targetLightbox) && $(".prev-lightbox").hide(), $("a[data-lightbox]").index(targetLightbox) == $("a[data-lightbox]").length - 1 && $(".next-lightbox").hide()) : (0 == $('a[data-gallery-id="' + o + '"]').index(targetLightbox) && $(".prev-lightbox").hide(), $('a[data-gallery-id="' + o + '"]').index(targetLightbox) == $('a[data-gallery-id="' + o + '"]').length - 1 && $(".next-lightbox").hide()), addLightBoxSwipeSupport();
+        document.activeElement.classList.add("nextActive");
+        $("a[href]:not(.prev-lightbox):not(.next-lightbox), input, select, textarea, button:not(.close-lightbox), [tabindex], [contenteditable]").attr("tabindex", -1);
+        $(".close-lightbox").focus();
     }).on("hidden.bs.modal", "#lightbox-modal", function() {
-        $("#lightbox-modal").remove()
+        $("#lightbox-modal").remove();
+        $("a[href]:not(.prev-lightbox):not(.next-lightbox), input, select, textarea, button:not(.close-lightbox), [tabindex], [contenteditable]").attr("tabindex", 0);
+        $(".nextActive").focus().removeClass("nextActive");
     }), $(document).on("click", ".next-lightbox, .prev-lightbox", function(t) {
         t.preventDefault();
         var e = "no-gallery-set",
@@ -173,7 +178,7 @@ function addSwipeSupport() {
 
 function addKeyBoardSupport() {
     $(window).keydown(function(t) {
-        37 == t.which ? $(".prev-lightbox").is(":visible") && $(".prev-lightbox").click() : 39 == t.which && $(".next-lightbox").is(":visible") && $(".next-lightbox").click()
+        37 == t.which ? $(".prev-lightbox").is(":visible") && $(".prev-lightbox").click() : 39 == t.which ? $(".next-lightbox").is(":visible") && $(".next-lightbox").click() : "Escape" == t.key && $(".close-lightbox").click();
     })
 }
 
@@ -194,20 +199,21 @@ $(document).ready(function() {
             scrollTop: $("#scroll-hero").closest(".bloc").height()
         }, "slow")
     }), extraNavFuncs(), setUpSpecialNavs(), setUpDropdownSubs(), setUpLightBox(), setUpVisibilityToggle(), addSwipeSupport(), addKeyBoardSupport(), -1 != navigator.userAgent.indexOf("Safari") && -1 == navigator.userAgent.indexOf("Chrome") && $("#page-loading-blocs-notifaction").remove()
+    $(".scrollToTop").click(function(e) {
+        e.preventDefault();
+        scrollToTarget('1');
+        document.activeElement.blur();
+    });
+
+    $(document).keyup(function(e) {
+        if (e.key === "Escape") {
+            document.activeElement.blur();
+        }
+    });
 }), $(window).load(function() {
     setFillScreenBlocHeight(), animateWhenVisible(), $("#page-loading-blocs-notifaction").remove()
 }).resize(function() {
     setFillScreenBlocHeight()
 }), $(function() {
     $('[data-toggle="tooltip"]').tooltip()
-});
-$(".scrollToTop").click(function(e) {
-    e.preventDefault();
-    scrollToTarget('1');
-    document.activeElement.blur();
-});
-$(document).keyup(function(e) {
-    if (e.key === "Escape") {
-        document.activeElement.blur();
-    }
 });

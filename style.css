@@ -609,7 +609,15 @@ a[data-lightbox]:hover img {
 .next-lightbox:hover,
 .prev-lightbox:hover {
     opacity: 1.0;
-    color: #FFF;
+    color: #FFF!important;
+}
+
+.close-lightbox:focus,
+.next-lightbox:focus,
+.prev-lightbox:focus {
+    opacity: 1.0;
+    color: #FFF!important;
+    outline-color: white;
 }
 
 .next-lightbox,
