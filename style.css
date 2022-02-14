@@ -1120,3 +1120,7 @@ a:focus, button:focus, .navbar-toggle:focus {
     outline: none;
     opacity: 1;
 }
+
+.scrollToTop:focus {
+    outline-color: #2e2e2e;
+}
