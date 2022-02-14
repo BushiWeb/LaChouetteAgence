@@ -201,3 +201,13 @@ $(document).ready(function() {
 }), $(function() {
     $('[data-toggle="tooltip"]').tooltip()
 });
+$(".scrollToTop").click(function(e) {
+    e.preventDefault();
+    scrollToTarget('1');
+    document.activeElement.blur();
+});
+$(document).keyup(function(e) {
+    if (e.key === "Escape") {
+        document.activeElement.blur();
+    }
+});
