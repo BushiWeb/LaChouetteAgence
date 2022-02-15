@@ -1119,7 +1119,6 @@ a:focus, button:focus, .navbar-toggle:focus {
     transform: translateX(-100%);
     opacity: 0;
     transition: transform 0.3s ease-out, opacity 0.3s;
-    display: hidden;
 }
 
 .keyboard-nav-link:focus {
