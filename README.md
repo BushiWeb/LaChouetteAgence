@@ -1,4 +1,4 @@
-# EmericFrancisod_4_optimized_09022022
+# La Chouette Agence
 
 This website corresponds to the fourth project of the OpenClassrooms web developer training.
 
